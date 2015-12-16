@@ -17,8 +17,11 @@ extension OTMClient {
         print(hostViewController.usernameTextField.text)
         
         
-        let username = hostViewController.usernameTextField.text!
-        let password = hostViewController.passwordTextField.text!
+//        let username = hostViewController.usernameTextField.text!
+//        let password = hostViewController.passwordTextField.text!
+        
+        let username = "laura.evans@ivieinc.com"
+        let password = "Ilikelearning83!l"
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         request.HTTPMethod = "POST"
@@ -49,7 +52,7 @@ extension OTMClient {
             
             print("parsed data: \(parsedResult)")
             
-            guard (parsedResult["error"] != nil) else {
+            guard (parsedResult["error"]! == nil) else {
                 print("No login for you!")
                 completionHandler(success: false, errorString: parsedResult["error"] as? String)
                 return
