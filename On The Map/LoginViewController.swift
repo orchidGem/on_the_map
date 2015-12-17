@@ -13,7 +13,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    @IBOutlet weak var errorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
@@ -22,6 +23,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        errorLabel.hidden = true
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -41,10 +45,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else {
             OTMClient.sharedInstance().createSession(self) { (success, errorString) in
                 if success {
-                    print(success)
-                    print("sucessfully logged in!")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.errorLabel.text = "succssful login"
+                        self.errorLabel.hidden = false
+                    })
                 } else {
-                    print("ERROR!!! :( ")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.errorLabel.text = errorString
+                        self.errorLabel.hidden = false
+                    })
                 }
             }
         }
