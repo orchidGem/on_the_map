@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  On The Map
@@ -7,6 +8,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -42,20 +44,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             print("username and password are required")
-        } else {
-            OTMClient.sharedInstance().createSession(self) { (success, errorString) in
-                if success {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.errorLabel.text = "succssful login"
-                        self.errorLabel.hidden = false
-                    })
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.errorLabel.text = errorString
-                        self.errorLabel.hidden = false
-                    })
-                }
+            return
+        }
+        
+        OTMClient.sharedInstance().createSession(self) { (success, errorString) in
+            if success {
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    let mapViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
+                    
+                    self.presentViewController(mapViewController, animated: true, completion: nil)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.errorLabel.text = errorString
+                    self.errorLabel.hidden = false
+                })
             }
         }
+    }
+    
+    @IBAction func signUp(sender: AnyObject) {
+        let svc = SFSafariViewController(URL: NSURL(string: "https://www.udacity.com/account/auth#!/signin")!)
+        self.presentViewController(svc, animated: true, completion: nil)
     }
 }

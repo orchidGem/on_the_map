@@ -33,13 +33,13 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQd-T7-56H">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQd-T7-56H">
                                         <rect key="frame" x="258" y="171" width="84" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GKE-6E-mNB">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GKE-6E-mNB">
                                         <rect key="frame" x="10" y="232" width="580" height="165"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8SC-7s-GrJ">
@@ -78,6 +78,9 @@
                                                 <state key="normal" title="Don't have an account? Sign Up">
                                                     <color key="titleColor" red="0.98541796737754939" green="1" blue="0.97826345588454633" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ri-rV-6zZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -111,6 +114,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="305" y="415"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="XDv-HG-1s0">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="v5r-Hg-sQf" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0h8-HT-uGc"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3v-3m-VyY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VS7-rL-006">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aKn-jb-xws">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aKn-jb-xws" firstAttribute="leading" secondItem="VS7-rL-006" secondAttribute="leading" id="X1z-xE-gCD"/>
+                            <constraint firstAttribute="trailing" secondItem="aKn-jb-xws" secondAttribute="trailing" id="fqL-0W-gL2"/>
+                            <constraint firstItem="aKn-jb-xws" firstAttribute="top" secondItem="VS7-rL-006" secondAttribute="top" id="kC3-2f-taC"/>
+                            <constraint firstItem="t3v-3m-VyY" firstAttribute="top" secondItem="aKn-jb-xws" secondAttribute="bottom" id="ljl-Tk-5ji"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="aKn-jb-xws" id="XsW-5y-bpD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j0s-FP-ZsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="415"/>
         </scene>
     </scenes>
     <resources>

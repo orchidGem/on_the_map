@@ -14,9 +14,6 @@ extension OTMClient {
     
     func createSession(hostViewController: LoginViewController, completionHandler: (success: Bool, errorString: String?) -> Void) {
         
-        print(hostViewController.usernameTextField.text)
-        
-        
 //        let username = hostViewController.usernameTextField.text!
 //        let password = hostViewController.passwordTextField.text!
         
@@ -61,4 +58,42 @@ extension OTMClient {
         
         task.resume()
     }
+    
+    
+    func loadStudentInformation(completionHandler: (result: [OTMStudentInformation]?, errorString: String?) -> Void){
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            guard (error == nil) else {
+                print("error retrieiving student information")
+                return
+            }
+            
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+            } catch {
+                parsedResult = nil
+                print("Could not parse the data as JSON: \(data)")
+                return
+            }
+            
+            guard let results = parsedResult["results"] as? [[String : AnyObject]] else {
+                print("Cannot find key 'results' in \(parsedResult)")
+                return
+            }
+            
+            let students = OTMStudentInformation.moviesFromResults(results)
+            
+            completionHandler(result: students, errorString: nil)
+            
+            
+        }
+        task.resume()
+    }
+    
+    
 }
