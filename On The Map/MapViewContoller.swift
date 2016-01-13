@@ -11,12 +11,13 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    // Define Variables
     var locations: [OTMStudentInformation] = [OTMStudentInformation]()
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         
         OTMClient.sharedInstance().loadStudentInformation { (result, errorString) -> Void in
             if let locations = result {
@@ -25,13 +26,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.loadLocations()
                 })
             } else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    print(errorString)
-                })
+                print(errorString)
             }
         }
         
         mapView.delegate = self
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    // Refresh View
+    @IBAction func refresh(sender: AnyObject) {
+        self.viewWillAppear(true)
+    }
+    
+    // Logout
+    @IBAction func logOut(sender: AnyObject) {
+        OTMClient.sharedInstance().deleteSession() { (success, error) in
+            if success {
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    let loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoginController")
+                    self.presentViewController(loginViewController!, animated: true, completion: nil)
+                    
+                })
+            } else {
+                print("error logging out")
+            }
+        }
     }
     
     //MARK - Load Locations on Map
@@ -101,7 +125,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("tapped on me")
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle! {

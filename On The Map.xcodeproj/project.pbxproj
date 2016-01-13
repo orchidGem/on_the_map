@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		AD1E37FB1C0E52FF006176EC /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E37FA1C0E52FF006176EC /* OTMClient.swift */; settings = {ASSET_TAGS = (); }; };
 		AD1E37FD1C0E5A05006176EC /* OTMConvinience.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1E37FC1C0E5A05006176EC /* OTMConvinience.swift */; settings = {ASSET_TAGS = (); }; };
+		AD28B10A1C31F73700CF09B7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28B1091C31F73700CF09B7 /* ListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		AD478D9B1C2321AE0024B5A3 /* MapViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD478D9A1C2321AE0024B5A3 /* MapViewContoller.swift */; settings = {ASSET_TAGS = (); }; };
 		AD478D9D1C2324AE0024B5A3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD478D9C1C2324AE0024B5A3 /* MapKit.framework */; };
 		AD68D01D1C27407B00EB344F /* OTMStudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD68D01C1C27407B00EB344F /* OTMStudentInformation.swift */; settings = {ASSET_TAGS = (); }; };
+		ADD1F6F71C39E2F40024D46D /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1F6F61C39E2F40024D46D /* InfoPostingViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ADEEE6DC1C0E19D400085DF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEE6DB1C0E19D400085DF3 /* AppDelegate.swift */; };
 		ADEEE6DE1C0E19D400085DF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEEE6DD1C0E19D400085DF3 /* LoginViewController.swift */; };
 		ADEEE6E11C0E19D400085DF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEEE6DF1C0E19D400085DF3 /* Main.storyboard */; };
@@ -39,9 +41,11 @@
 /* Begin PBXFileReference section */
 		AD1E37FA1C0E52FF006176EC /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
 		AD1E37FC1C0E5A05006176EC /* OTMConvinience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConvinience.swift; sourceTree = "<group>"; };
+		AD28B1091C31F73700CF09B7 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = ../ListViewController.swift; sourceTree = "<group>"; };
 		AD478D9A1C2321AE0024B5A3 /* MapViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewContoller.swift; sourceTree = "<group>"; };
 		AD478D9C1C2324AE0024B5A3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AD68D01C1C27407B00EB344F /* OTMStudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudentInformation.swift; sourceTree = "<group>"; };
+		ADD1F6F61C39E2F40024D46D /* InfoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
 		ADEEE6D81C0E19D400085DF3 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEEE6DB1C0E19D400085DF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADEEE6DD1C0E19D400085DF3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -90,9 +94,9 @@
 		AD1E37F91C0E52DF006176EC /* OTM */ = {
 			isa = PBXGroup;
 			children = (
+				AD68D01C1C27407B00EB344F /* OTMStudentInformation.swift */,
 				AD1E37FA1C0E52FF006176EC /* OTMClient.swift */,
 				AD1E37FC1C0E5A05006176EC /* OTMConvinience.swift */,
-				AD68D01C1C27407B00EB344F /* OTMStudentInformation.swift */,
 			);
 			name = OTM;
 			sourceTree = "<group>";
@@ -150,7 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				ADEEE6DD1C0E19D400085DF3 /* LoginViewController.swift */,
+				AD28B1091C31F73700CF09B7 /* ListViewController.swift */,
 				AD478D9A1C2321AE0024B5A3 /* MapViewContoller.swift */,
+				ADD1F6F61C39E2F40024D46D /* InfoPostingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -307,11 +313,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD68D01D1C27407B00EB344F /* OTMStudentInformation.swift in Sources */,
+				ADD1F6F71C39E2F40024D46D /* InfoPostingViewController.swift in Sources */,
 				AD1E37FD1C0E5A05006176EC /* OTMConvinience.swift in Sources */,
 				AD478D9B1C2321AE0024B5A3 /* MapViewContoller.swift in Sources */,
 				ADEEE6DE1C0E19D400085DF3 /* LoginViewController.swift in Sources */,
 				AD1E37FB1C0E52FF006176EC /* OTMClient.swift in Sources */,
 				ADEEE6DC1C0E19D400085DF3 /* AppDelegate.swift in Sources */,
+				AD28B10A1C31F73700CF09B7 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

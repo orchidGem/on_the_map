@@ -43,7 +43,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginSubmit(sender: AnyObject) {
         
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            print("username and password are required")
+            dispatch_async(dispatch_get_main_queue(), {
+                self.errorLabel.text = "Username and Password are required."
+                self.errorLabel.hidden = false
+            })
             return
         }
         
@@ -51,9 +54,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if success {
                 dispatch_async(dispatch_get_main_queue(), {
                     
-                    let mapViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
+                    let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController")
+                    self.presentViewController(tabBarController!, animated: true, completion: nil)
                     
-                    self.presentViewController(mapViewController, animated: true, completion: nil)
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {

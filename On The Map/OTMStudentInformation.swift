@@ -6,6 +6,7 @@
 //  Copyright © 2015 Ivie. All rights reserved.
 //
 
+// Custom Struct for OTMStudentInformation Class
 struct OTMStudentInformation {
     
     //Mark: Properties
@@ -35,7 +36,7 @@ struct OTMStudentInformation {
         acl = (dictionary["acl"] as? AnyObject?)!
     }
     
-    static func moviesFromResults(results: [[String : AnyObject]]) -> [OTMStudentInformation] {
+    static func studentsFromResults(results: [[String : AnyObject]]) -> [OTMStudentInformation] {
         
         var students = [OTMStudentInformation]()
         

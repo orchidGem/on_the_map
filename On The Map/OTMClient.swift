@@ -10,6 +10,8 @@ import Foundation
 
 class OTMClient: NSObject {
     
+    var userID: String?
+    
     // MARK: Shared Instance
     
     class func sharedInstance() -> OTMClient {
@@ -19,6 +21,20 @@ class OTMClient: NSObject {
         }
         
         return Singleton.sharedInstance
+    }
+    
+    /* Helper: Given raw JSON, return a usable Foundation object */
+    class func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+        
+        var parsedResult: AnyObject!
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+        } catch {
+            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+            completionHandler(result: nil, error: NSError(domain: "parseJSONWithCompletionHandler", code: 1, userInfo: userInfo))
+        }
+        
+        completionHandler(result: parsedResult, error: nil)
     }
 
 }
