@@ -40,6 +40,11 @@ class InfoPostingViewController: UIViewController {
     // Submit Location and show pin on map
     @IBAction func submitLocation(sender: AnyObject) {
         
+        let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        myActivityIndicator.center = self.view.center
+        myActivityIndicator.startAnimating()
+        self.view.addSubview(myActivityIndicator)
+        
         let location = locationTextField.text as String!
         let geocoder = CLGeocoder()
         
@@ -51,6 +56,7 @@ class InfoPostingViewController: UIViewController {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.errorLabel.text = "Unable to get location. Please try again."
                         self.errorLabel.hidden = false
+                        myActivityIndicator.removeFromSuperview()
                     })
                     return
                 }
@@ -68,7 +74,9 @@ class InfoPostingViewController: UIViewController {
                     self.showURLView()
                     self.mapView.addAnnotation(annotation)
                     self.centerMapOnLocation(zoomInLocation)
+                    myActivityIndicator.removeFromSuperview()
                 })
+                
          })
     }
     

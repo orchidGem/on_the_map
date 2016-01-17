@@ -17,6 +17,7 @@ extension OTMClient {
         
         let username = hostViewController.usernameTextField.text!
         let password = hostViewController.passwordTextField.text!
+
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         request.HTTPMethod = "POST"

@@ -50,12 +50,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         }
         
+        let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        myActivityIndicator.center = self.view.center
+        myActivityIndicator.startAnimating()
+        self.view.addSubview(myActivityIndicator)
+        
         OTMClient.sharedInstance().createSession(self) { (success, errorString) in
             if success {
                 dispatch_async(dispatch_get_main_queue(), {
                     
                     let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController")
                     self.presentViewController(tabBarController!, animated: true, completion: nil)
+                    myActivityIndicator.removeFromSuperview()
                     
                 })
             } else {
@@ -64,6 +70,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     let alertController = UIAlertController(title: nil, message: errorString, preferredStyle: .Alert)
                     let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
                     alertController.addAction(dismissAction)
+                    
+                    myActivityIndicator.removeFromSuperview()
                     
                     self.presentViewController(alertController, animated: true, completion: nil)
                     
