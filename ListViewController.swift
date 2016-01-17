@@ -26,6 +26,7 @@ class ListViewController: UIViewController {
                 
         OTMClient.sharedInstance().loadStudentInformation { (result, errorString) -> Void in
             if let locations = result {
+                self.locations = locations
                 dispatch_async(dispatch_get_main_queue(), {
                     self.listTableView.reloadData()
                 })
