@@ -108,7 +108,7 @@ extension OTMClient {
                 completionHandler(result: nil, errorString: "Error retreiving student information")
                 print("error retrieiving student information")
                 return
-            }
+            }            
             
             let parsedResult: AnyObject!
             do {
@@ -119,6 +119,8 @@ extension OTMClient {
                 print("Could not parse the data as JSON: \(data)")
                 return
             }
+            
+            print(parsedResult)
             
             guard let results = parsedResult["results"] as? [[String : AnyObject]] else {
                 completionHandler(result: nil, errorString: "Error loading student information")

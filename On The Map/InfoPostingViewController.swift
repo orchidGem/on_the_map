@@ -23,6 +23,9 @@ class InfoPostingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        urlTextField.delegate = self
+        locationTextField.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -143,4 +146,14 @@ extension InfoPostingViewController: MKMapViewDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
     }
  
+}
+
+extension InfoPostingViewController: UITextFieldDelegate {
+    
+    // TextField Delegate Behavior
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        urlTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        return true
+    }
 }

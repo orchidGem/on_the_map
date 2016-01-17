@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/InfoPostingViewController.swift"
-            timestampString = "474414216.954733"
+            timestampString = "474762457.036064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "submitLocation(_:)"
             landmarkType = "5">
             <Locations>
@@ -122,11 +122,11 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/laura.evans/Desktop/Learning/iOS/Udacity/onthemap/main_project/On%20The%20Map/On%20The%20Map/InfoPostingViewController.swift"
-                  timestampString = "474071389.871886"
+                  timestampString = "474761941.936135"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
                   offsetFromSymbolStart = "847">
                </Location>
                <Location
@@ -137,12 +137,12 @@
                   moduleName = "On The Map"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/laura.evans/Desktop/Learning/iOS/Udacity/onthemap/main_project/On%20The%20Map/On%20The%20Map/InfoPostingViewController.swift"
-                  timestampString = "474071389.872272"
+                  timestampString = "474761941.936472"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "2036">
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "2039">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/OTMConvinience.swift"
-            timestampString = "474416976.398404"
+            timestampString = "474759806.940652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "postStudentInformation(_:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On The Map/OTMConvinience.swift"
-            timestampString = "474416976.398404"
+            timestampString = "474759806.940652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "postStudentInformation(_:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
