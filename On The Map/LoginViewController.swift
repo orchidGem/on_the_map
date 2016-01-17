@@ -15,7 +15,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +24,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        errorLabel.hidden = true
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -43,11 +39,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginSubmit(sender: AnyObject) {
         
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.errorLabel.text = "Username and Password are required."
-                self.errorLabel.hidden = false
-            })
+
+            let alertController = UIAlertController(title: nil, message: "Empty email or password", preferredStyle: .Alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+            alertController.addAction(dismissAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
             return
+            
         }
         
         OTMClient.sharedInstance().createSession(self) { (success, errorString) in
@@ -60,8 +60,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.errorLabel.text = errorString
-                    self.errorLabel.hidden = false
+                    
+                    let alertController = UIAlertController(title: nil, message: errorString, preferredStyle: .Alert)
+                    let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+                    alertController.addAction(dismissAction)
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                    return
                 })
             }
         }

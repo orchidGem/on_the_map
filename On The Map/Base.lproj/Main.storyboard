@@ -21,26 +21,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="mmp-gE-vfq">
                                 <rect key="frame" x="0.0" y="92" width="600" height="397"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wec-3d-oqN">
-                                        <rect key="frame" x="172" y="0.0" width="256" height="131"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wec-3d-oqN">
+                                        <rect key="frame" x="172" y="0.0" width="256" height="192"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="Phv-YI-atO">
-                                                <rect key="frame" x="0.0" y="0.0" width="256" height="110"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="Phv-YI-atO">
+                                                <rect key="frame" x="0.0" y="0.0" width="256" height="171"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw2-l6-foj">
-                                                <rect key="frame" x="66" y="110" width="125" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw2-l6-foj">
+                                                <rect key="frame" x="66" y="171" width="125" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQd-T7-56H">
-                                        <rect key="frame" x="258" y="171" width="84" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GKE-6E-mNB">
                                         <rect key="frame" x="10" y="232" width="580" height="165"/>
                                         <subviews>
@@ -108,7 +102,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="errorLabel" destination="NQd-T7-56H" id="RBQ-Zz-1qp"/>
                         <outlet property="passwordTextField" destination="dCd-Cy-Adq" id="9QF-24-WJb"/>
                         <outlet property="usernameTextField" destination="8SC-7s-GrJ" id="jzN-1o-nEH"/>
                     </connections>
@@ -245,7 +238,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Where are you studying today?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMZ-cz-PX7">
                                         <rect key="frame" x="65" y="44" width="479" height="99"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mV4-Uu-FHg">
@@ -256,7 +249,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="GtD-GU-ZsV" firstAttribute="top" secondItem="kBe-e5-0lY" secondAttribute="top" constant="146" id="H55-n3-dm0"/>
                                     <constraint firstAttribute="bottom" secondItem="mV4-Uu-FHg" secondAttribute="bottom" constant="17" id="S7r-lH-rnO"/>
@@ -289,7 +282,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kBe-e5-0lY" firstAttribute="top" secondItem="G7P-C2-uV1" secondAttribute="top" id="6bp-zY-fxy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AbT-Ke-NJr" secondAttribute="trailing" constant="41" id="FfA-uU-dsK"/>
