@@ -19,7 +19,6 @@ class InfoPostingViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var urlView: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +31,21 @@ class InfoPostingViewController: UIViewController {
         super.viewWillAppear(true)
         
         mapView.hidden = true
-        errorLabel.hidden = true
         urlView.hidden = true
     }
     
     
     // Submit Location and show pin on map
     @IBAction func submitLocation(sender: AnyObject) {
+        
+        if locationTextField.text!.isEmpty {
+            let emptyLocationAlertController = UIAlertController(title: nil, message: "Location is required", preferredStyle: .Alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+            emptyLocationAlertController.addAction(dismissAction)
+            self.presentViewController(emptyLocationAlertController, animated: true, completion: nil)
+            
+            return
+        }
         
         let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         myActivityIndicator.center = self.view.center
@@ -52,10 +59,12 @@ class InfoPostingViewController: UIViewController {
             {(placemarks, error) in
                 
                 guard (error == nil) else {
-                    print("Unable to get location")
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.errorLabel.text = "Unable to get location. Please try again."
-                        self.errorLabel.hidden = false
+                        let geocodeAlertController = UIAlertController(title: nil, message: "Unable to get location", preferredStyle: .Alert)
+                        let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+                        geocodeAlertController.addAction(dismissAction)
+                        self.presentViewController(geocodeAlertController, animated: true, completion: nil)
+                        
                         myActivityIndicator.removeFromSuperview()
                     })
                     return
@@ -84,10 +93,11 @@ class InfoPostingViewController: UIViewController {
     @IBAction func submitURL(sender: AnyObject) {
         
         if urlTextField.text!.isEmpty {
-            print("url text field is required")
             dispatch_async(dispatch_get_main_queue(), {
-                self.errorLabel.text = "URL is required"
-                self.errorLabel.hidden = false
+                let emptyUrlAlertController = UIAlertController(title: nil, message: "URL is required.", preferredStyle: .Alert)
+                let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+                emptyUrlAlertController.addAction(dismissAction)
+                self.presentViewController(emptyUrlAlertController, animated: true, completion: nil)
             })
             return
         }
@@ -100,10 +110,11 @@ class InfoPostingViewController: UIViewController {
                     self.dismissViewControllerAnimated(true, completion: nil)
                 })
             } else {
-                print("error creating pin: \(error)")
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.errorLabel.text = "Error creating pin. Please try again."
-                    self.errorLabel.hidden = false
+                    let postAlertController = UIAlertController(title: nil, message: "error creating pin: \(error!)", preferredStyle: .Alert)
+                    let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+                    postAlertController.addAction(dismissAction)
+                    self.presentViewController(postAlertController, animated: true, completion: nil)
                 })
             }
         }
@@ -120,7 +131,6 @@ class InfoPostingViewController: UIViewController {
         self.mapView.hidden = false
         self.locationView.hidden = true
         self.urlView.hidden = false
-        self.errorLabel.hidden = true
     }
 }
 

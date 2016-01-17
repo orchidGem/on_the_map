@@ -67,11 +67,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
                     
+                    myActivityIndicator.removeFromSuperview()
+                    
                     let alertController = UIAlertController(title: nil, message: errorString, preferredStyle: .Alert)
                     let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
                     alertController.addAction(dismissAction)
-                    
-                    myActivityIndicator.removeFromSuperview()
                     
                     self.presentViewController(alertController, animated: true, completion: nil)
                     

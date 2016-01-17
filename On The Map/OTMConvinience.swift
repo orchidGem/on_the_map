@@ -121,8 +121,6 @@ extension OTMClient {
                 return
             }
             
-            print(parsedResult)
-            
             guard let results = parsedResult["results"] as? [[String : AnyObject]] else {
                 completionHandler(result: nil, errorString: "Error loading student information")
                 print("Cannot find key 'results' in \(parsedResult)")

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -264,16 +263,6 @@
                                     <constraint firstAttribute="trailing" secondItem="GtD-GU-ZsV" secondAttribute="trailing" id="yKX-7F-ggv"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbT-Ke-NJr">
-                                <rect key="frame" x="41" y="166" width="527" height="30"/>
-                                <color key="backgroundColor" red="0.77456825657894723" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3tj-od-sYX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUb-a4-Q6p">
                                 <rect key="frame" x="533" y="20" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
@@ -285,7 +274,6 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kBe-e5-0lY" firstAttribute="top" secondItem="G7P-C2-uV1" secondAttribute="top" id="6bp-zY-fxy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="AbT-Ke-NJr" secondAttribute="trailing" constant="41" id="FfA-uU-dsK"/>
                             <constraint firstItem="M4D-fx-Fia" firstAttribute="top" secondItem="kBe-e5-0lY" secondAttribute="bottom" id="LRu-SK-eNX"/>
                             <constraint firstItem="M4D-fx-Fia" firstAttribute="top" secondItem="xeZ-vF-Avi" secondAttribute="bottom" id="LaK-sw-F9X"/>
                             <constraint firstItem="kBe-e5-0lY" firstAttribute="leading" secondItem="G7P-C2-uV1" secondAttribute="leading" id="PGz-2F-6g1"/>
@@ -293,14 +281,11 @@
                             <constraint firstItem="lUb-a4-Q6p" firstAttribute="top" secondItem="zkB-Bo-SWG" secondAttribute="bottom" constant="5" id="XAW-Mr-kyA"/>
                             <constraint firstItem="xeZ-vF-Avi" firstAttribute="leading" secondItem="G7P-C2-uV1" secondAttribute="leading" id="Ya8-aE-wfE"/>
                             <constraint firstAttribute="trailing" secondItem="lUb-a4-Q6p" secondAttribute="trailing" constant="5" id="aBF-7c-elo"/>
-                            <constraint firstItem="AbT-Ke-NJr" firstAttribute="leading" secondItem="G7P-C2-uV1" secondAttribute="leadingMargin" constant="41" id="gpK-GC-wEj"/>
                             <constraint firstAttribute="trailing" secondItem="kBe-e5-0lY" secondAttribute="trailing" id="nns-Qp-v8X"/>
-                            <constraint firstItem="AbT-Ke-NJr" firstAttribute="top" secondItem="lUb-a4-Q6p" secondAttribute="bottom" constant="100" id="sbt-9u-orf"/>
                             <constraint firstAttribute="trailing" secondItem="xeZ-vF-Avi" secondAttribute="trailing" id="zrf-98-6oZ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="errorLabel" destination="AbT-Ke-NJr" id="U6G-j3-GQd"/>
                         <outlet property="locationTextField" destination="5nT-Wy-xeX" id="euV-cy-lRZ"/>
                         <outlet property="locationView" destination="kBe-e5-0lY" id="hvK-0w-0GY"/>
                         <outlet property="mapView" destination="m1z-oF-azC" id="0kI-jW-9bd"/>
