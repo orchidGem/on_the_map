@@ -26,7 +26,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.loadLocations()
                 })
             } else {
-                print(errorString)
+                
+                let alertController = UIAlertController(title: nil, message: errorString, preferredStyle: .Alert)
+                let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel) { (action) in }
+                alertController.addAction(dismissAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
             }
         }
         
