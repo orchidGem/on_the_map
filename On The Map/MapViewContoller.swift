@@ -19,10 +19,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        OTMClient.sharedInstance().loadStudentInformation { (result, errorString) -> Void in
-            if let locations = result {
+        OTMClient.sharedInstance().loadStudentInformation { (success, errorString) -> Void in
+            if success {
+                self.locations = OTMStudentInformation.allStudentInformation
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.locations = locations
                     self.loadLocations()
                 })
             } else {
@@ -66,6 +66,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK - Load Locations on Map
     func loadLocations() {
+        
+        // Remove currently existing pins
+        mapView.removeAnnotations(mapView.annotations)
         
         // We will create an MKPointAnnotation for each dictionary in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.

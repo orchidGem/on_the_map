@@ -97,7 +97,7 @@ extension OTMClient {
     }
     
     
-    func loadStudentInformation(completionHandler: (result: [OTMStudentInformation]?, errorString: String?) -> Void)
+    func loadStudentInformation(completionHandler: (result: Bool, errorString: String?) -> Void)
     {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation?order=-updatedAt")!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
@@ -106,7 +106,7 @@ extension OTMClient {
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
             guard (error == nil) else {
-                completionHandler(result: nil, errorString: "Error retreiving student information")
+                completionHandler(result: false, errorString: "Error retreiving student information")
                 print("error retrieiving student information")
                 return
             }            
@@ -116,22 +116,21 @@ extension OTMClient {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
             } catch {
                 parsedResult = nil
-                completionHandler(result: nil, errorString: "Error parsing data")
+                completionHandler(result: false, errorString: "Error parsing data")
                 print("Could not parse the data as JSON: \(data)")
                 return
             }
             
             guard let results = parsedResult["results"] as? [[String : AnyObject]] else {
-                completionHandler(result: nil, errorString: "Error loading student information")
+                completionHandler(result: false, errorString: "Error loading student information")
                 print("Cannot find key 'results' in \(parsedResult)")
                 return
             }
             
-            let students = OTMStudentInformation.studentsFromResults(results)
+            OTMStudentInformation.studentsFromResults(results)
             
-            completionHandler(result: students, errorString: nil)
-            
-            
+            completionHandler(result: true, errorString: nil)
+     
         }
         
         task.resume()

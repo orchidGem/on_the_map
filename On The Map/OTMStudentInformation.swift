@@ -22,6 +22,8 @@ struct OTMStudentInformation {
     var updatedAt: AnyObject?
     var acl: AnyObject?
     
+    static var allStudentInformation = [OTMStudentInformation]()
+    
     init(dictionary: [String : AnyObject]) {
         objectId = dictionary["objectId"] as! String
         uniqueKey = dictionary["uniqueKey"] as! String
@@ -36,15 +38,14 @@ struct OTMStudentInformation {
         acl = (dictionary["acl"] as? AnyObject?)!
     }
     
-    static func studentsFromResults(results: [[String : AnyObject]]) -> [OTMStudentInformation] {
+    static func studentsFromResults(results: [[String : AnyObject]]) -> Void {
         
-        var students = [OTMStudentInformation]()
+        allStudentInformation.removeAll()
         
         for result in results {
-            students.append(OTMStudentInformation(dictionary: result))
+            allStudentInformation.append(OTMStudentInformation(dictionary: result))
         }
         
-        return students
     }
 
 }

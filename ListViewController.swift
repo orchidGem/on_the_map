@@ -24,9 +24,9 @@ class ListViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
                 
-        OTMClient.sharedInstance().loadStudentInformation { (result, errorString) -> Void in
-            if let locations = result {
-                self.locations = locations
+        OTMClient.sharedInstance().loadStudentInformation { (success, errorString) -> Void in
+            if success {
+                self.locations = OTMStudentInformation.allStudentInformation
                 dispatch_async(dispatch_get_main_queue(), {
                     self.listTableView.reloadData()
                 })
