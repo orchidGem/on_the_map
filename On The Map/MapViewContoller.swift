@@ -12,7 +12,6 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Define Variables
-    var locations: [OTMStudentInformation] = [OTMStudentInformation]()
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     
@@ -21,7 +20,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         OTMClient.sharedInstance().loadStudentInformation { (success, errorString) -> Void in
             if success {
-                self.locations = OTMStudentInformation.allStudentInformation
                 dispatch_async(dispatch_get_main_queue(), {
                     self.loadLocations()
                 })
@@ -78,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
         
-        for location in locations {
+        for location in OTMStudentInformation.allStudentInformation {
             
             // Notice that the float values are being used to create CLLocationDegree values.
             // This is a version of the Double type.

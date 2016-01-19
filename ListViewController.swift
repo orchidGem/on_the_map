@@ -10,8 +10,6 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    var locations: [OTMStudentInformation] = [OTMStudentInformation]()
-    
     @IBOutlet weak var listTableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,7 +24,6 @@ class ListViewController: UIViewController {
                 
         OTMClient.sharedInstance().loadStudentInformation { (success, errorString) -> Void in
             if success {
-                self.locations = OTMStudentInformation.allStudentInformation
                 dispatch_async(dispatch_get_main_queue(), {
                     self.listTableView.reloadData()
                 })
@@ -69,13 +66,13 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return OTMStudentInformation.allStudentInformation.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("LocationTableViewCell") as UITableViewCell!
-        let location = locations[indexPath.row]
+        let location = OTMStudentInformation.allStudentInformation[indexPath.row]
         
         cell.textLabel!.text = "\(location.firstName) \(location.lastName)"
         cell.imageView!.image = UIImage(named: "pin")
@@ -86,7 +83,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let app = UIApplication.sharedApplication()
-        if let url = locations[indexPath.row].mediaURL as String? {
+        if let url = OTMStudentInformation.allStudentInformation[indexPath.row].mediaURL as String? {
             app.openURL(NSURL(string: url)!)
         }
         
